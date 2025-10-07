@@ -18,12 +18,12 @@ export default function Destinations() {
             effect="coverflow"
             grabCursor={true}
             centeredSlides={true}
-            slidesPerView={3}
-            spaceBetween={30}
+            slidesPerView={1.2} // slightly bigger card on mobile
+            spaceBetween={20}
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
-              depth: 120,
+              depth: 150,
               modifier: 3,
               slideShadows: false,
             }}
@@ -31,9 +31,27 @@ export default function Destinations() {
               delay: 2500,
               disableOnInteraction: false,
             }}
-            loop={true}
+            loop={true} // infinite loop
             modules={[EffectCoverflow, Autoplay]}
             className="mySwiper"
+            breakpoints={{
+              640: {
+                slidesPerView: 1.5, // bigger horizontal card
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 25,
+              },
+              1024: {
+                slidesPerView: 2.5, // wider on desktop
+                spaceBetween: 30,
+              },
+              1280: {
+                slidesPerView: 3, // largest width
+                spaceBetween: 40,
+              },
+            }}
           >
             {destinations.map((d) => (
               <SwiperSlide key={d.id}>
@@ -50,14 +68,6 @@ export default function Destinations() {
                     <p className="text-sm text-gray-600 mt-1 line-clamp-2">
                       {d.short}
                     </p>
-                    <div className="mt-4 flex justify-end">
-                      <a
-                        href="#booking"
-                        className="text-sm px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                      >
-                        View Package
-                      </a>
-                    </div>
                   </div>
                 </div>
               </SwiperSlide>

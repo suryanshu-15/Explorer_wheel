@@ -1,6 +1,6 @@
 const bikes = [
   // Commuter Segment
-  { id: 1, name: 'Hero Splendor', type: 'Commuter', price: '₹799 / day', img: 'https://shop.yamaha-motor-india.com/cdn/shop/files/MicrosoftTeams-image_5_600x.jpg?v=1698824600', desc: 'Reliable and fuel-efficient commuter bike ideal for daily city rides.' },
+  { id: 1, name: 'Hero Splendor', type: 'Commuter', price: '₹799 / day', img: 'https://imgd.aeplcdn.com/272x153/n/cw/ec/15109/splendor-plus-right-side-view-2.png?isig=0&q=80', desc: 'Reliable and fuel-efficient commuter bike ideal for daily city rides.' },
   { id: 2, name: 'Hero Passion Pro', type: 'Commuter', price: '₹799 / day', img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/50101/passion-pro-right-front-three-quarter.jpeg?q=80', desc: 'Stylish commuter bike with excellent mileage and comfort.' },
   { id: 3, name: 'Honda Livo', type: 'Commuter', price: '₹799 / day', img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/--drum-20251737370775509.jpg?q=80', desc: 'Smooth ride and efficient performance for daily commuting.' },
   { id: 4, name: 'Honda Shine', type: 'Commuter', price: '₹799 / day', img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/honda-shine-drum1751549564957.jpg?q=80', desc: 'Reliable commuter bike — perfect for short rides and city exploration.' },
