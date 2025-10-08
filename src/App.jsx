@@ -10,6 +10,7 @@ import BookingForm from './components/BookingForm'
 import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import Gallery from './components/Gallary'
 
 export default function App(){
   return (
@@ -18,6 +19,7 @@ export default function App(){
       <Hero/>
       <main className='max-w-7xl mx-auto px-4 py-8'>
         <Services/>
+        <Gallery/>
         <Fleet/>
         {/* <Packages   /> */}
         <Destinations/>

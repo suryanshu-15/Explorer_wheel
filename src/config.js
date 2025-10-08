@@ -1,3 +1,3 @@
-export const PHONE = '+91XXXXXXXXXX'; // replace with your WhatsApp/Phone later (+91...)
-export const EMAIL = 'youremail@example.com'; // replace with booking admin email
+export const PHONE = '+91 8984192523';
+export const EMAIL = 'bikerental52@gmail.com';
 export const ADDRESS = 'Koraput, Odisha';
