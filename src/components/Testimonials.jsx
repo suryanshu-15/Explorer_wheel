@@ -55,7 +55,7 @@ export default function Testimonials() {
       {/* Google Review Button */}
       <div className='mt-10'>
         <a
-          href='https://share.google/VS7vGIJyvZmxFrcfc'
+          href='https://g.page/r/CWo1VcDtIKBKEBM/review'
           target='_blank'
           rel='noopener noreferrer'
           className='inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition'
