@@ -45,8 +45,8 @@ export default function Services() {
             <div className='flex items-center gap-5 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md transition min-h-[130px]'>
               <img src="https://suritours.in/nimg/taxi-service-in-delhi.jpg" alt='Taxi' className='w-28 h-20 rounded-xl object-cover' />
               <div>
-                <h4 className='font-semibold text-lg text-gray-800'>Self-Drive Bikes</h4>
-                <p className='text-sm text-gray-600'>Starting at ₹799/day</p>
+                <h4 className='font-semibold text-lg text-gray-800'>Taxi Services</h4>
+                <p className='text-sm text-gray-600'>Starting at ₹1999/day</p>
               </div>
             </div>
 
