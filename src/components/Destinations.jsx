@@ -7,9 +7,18 @@ import "swiper/css/pagination"
 import { EffectCoverflow, Autoplay } from "swiper/modules"
 
 export default function Destinations() {
-  // Use the custom Google Map link you provided
-  const googleMapSrc = "https://maps.app.goo.gl/og7VNwCSQBbqQrUr9"
-
+  // Use the URL for your hosted Commutes & Transit solution
+  // This URL points to the pre-built HTML page that contains the map and its logic.
+  const commutesMapSrc = "https://storage.googleapis.com/maps-solutions-675yca80ha/commutes/olhg/commutes.html";
+{<iframe
+  title="Koraput Commutes Map"
+  src={commutesMapSrc} // <-- This points to the map application
+  width="100%"
+  height="600px"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+/>}
   return (
     <section id="destinations" className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto text-center px-4">
@@ -56,15 +65,16 @@ export default function Destinations() {
           </Swiper>
         </div>
 
-        {/* Google Map Section */}
+        {/* Google Map Section - Now embedding the Commutes & Transit solution */}
         <div className="mt-14">
           <h4 className="text-xl font-semibold text-gray-800 mb-4">Find All Destinations on Map</h4>
           <div className="rounded-2xl overflow-hidden shadow-md border border-gray-200">
             <iframe
-              title="Koraput Destinations Map"
-              src={googleMapSrc}
+              title="Koraput Commutes Map" // Give it a more specific title
+              src={commutesMapSrc} // Use the URL for your commutes solution
               width="100%"
-              height="400"
+              height="600px" // Adjust height as needed for the UI
+              style={{ border: 0 }} // React uses camelCase for style properties
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
