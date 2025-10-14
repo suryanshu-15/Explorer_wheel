@@ -7,8 +7,8 @@ export default function Gallery() {
     '/gallary/2.jpeg',
     '/gallary/3.jpeg',
     '/gallary/4.jpeg',
-    '/gallary/5.jpeg',
-    '/gallary/6.jpeg'
+    // '/gallary/5.jpeg',
+    // '/gallary/6.jpeg'
   ]
 
   return (
@@ -19,24 +19,23 @@ export default function Gallery() {
           Glimpses of the beauty and adventure around Koraput.
         </p>
 
-        {/* Grid Layout */}
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-          {/* Big Image */}
-          <div className='col-span-2 row-span-2'>
-            <img
-              src={images[0]}
-              alt='Deomali Peak'
-              className='w-full h-[350px] object-cover rounded-xl shadow-md hover:scale-[1.02] transition'
-            />
-          </div>
+        {/* Top Landscape Image */}
+        <div className='mb-6'>
+          <img
+            src={images[0]}
+            alt='Deomali Peak'
+            className='w-full h-[350px] md:h-[450px] object-cover rounded-xl shadow-lg hover:scale-[1.02] transition'
+          />
+        </div>
 
-          {/* Smaller Images */}
-          {images.slice(1, 4).map((img, i) => (
+        {/* Grid of Remaining Images */}
+        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+          {images.slice(1).map((img, i) => (
             <img
               key={i}
               src={img}
-              alt={`Gallery ${i + 1}`}
-              className='w-full h-[170px] object-cover rounded-xl shadow-sm hover:scale-[1.03] transition'
+              alt={`Gallery ${i + 2}`}
+              className='w-full h-[180px] md:h-[200px] object-cover rounded-xl shadow-md hover:scale-[1.03] transition'
             />
           ))}
         </div>
