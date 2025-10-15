@@ -218,11 +218,12 @@
 // }
 
 
+
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { ShieldCheck, DollarSign, Headphones, MessageCircle } from 'lucide-react'
 import { PHONE, EMAIL, ADDRESS } from '../config'
 
-// Sample data
 const bikes = [
   'Hero Splendor', 'Hero Passion Pro', 'Honda Livo', 'Honda Shine',
   'Hero CBZ', 'Hero Xtreme', 'Yamaha FZS', 'TVS Apache 160', 'Honda Hornet',
@@ -259,7 +260,6 @@ export default function BookingForm() {
   const [error, setError] = useState('')
   const [modelOptions, setModelOptions] = useState([])
 
-  // Automatically update model options based on selected service
   useEffect(() => {
     if (booking.service === 'Bike') setModelOptions(bikes)
     else if (booking.service === 'Car') setModelOptions(cars)
@@ -269,7 +269,6 @@ export default function BookingForm() {
     setBooking(prev => ({ ...prev, item: '' }))
   }, [booking.service])
 
-  // Auto calculate duration
   useEffect(() => {
     if (booking.fromDate && booking.fromTime && booking.toDate && booking.toTime) {
       const from = new Date(`${booking.fromDate}T${booking.fromTime}`)
@@ -320,8 +319,15 @@ export default function BookingForm() {
     window.open(mailto, '_blank')
   }
 
+  const features = [
+    { icon: <ShieldCheck className='w-8 h-8 text-blue-600' />, title: 'Locally Curated Vehicles & Stays', desc: 'Verified options ensuring comfort and reliability.' },
+    { icon: <DollarSign className='w-8 h-8 text-green-600' />, title: 'Transparent Pricing', desc: 'No hidden charges — what you see is what you pay.' },
+    { icon: <Headphones className='w-8 h-8 text-yellow-500' />, title: '24/7 Support & Safety Kits', desc: 'Your safety and convenience come first.' },
+    { icon: <MessageCircle className='w-8 h-8 text-purple-600' />, title: 'Easy WhatsApp Booking', desc: 'Book rides or stays instantly via WhatsApp.' },
+  ]
+
   return (
-    <section id='booking' className='mt-14 grid md:grid-cols-2 gap-8 items-start'>
+    <section id='booking' className='mt-14 grid md:grid-cols-2 gap-10 items-start'>
       {/* Left side: Booking Form */}
       <div>
         <h3 className='text-2xl font-semibold'>Book Your Ride / Stay</h3>
@@ -374,7 +380,6 @@ export default function BookingForm() {
               </select>
             )}
 
-            {/* From and To datetime */}
             <div className='flex flex-col sm:flex-row gap-3'>
               <div className='flex-1'>
                 <label className='text-sm text-gray-600'>From</label>
@@ -418,7 +423,7 @@ export default function BookingForm() {
 
             <button
               type='submit'
-              className='px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition'
+              className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition'
             >
               Send via WhatsApp
             </button>
@@ -432,37 +437,26 @@ export default function BookingForm() {
         </div>
       </div>
 
-      {/* Right side: Why Explorer Wheels + Animation */}
-      <div className='relative flex flex-col items-center justify-center'>
-        <h3 className='text-2xl font-semibold mb-3'>Why Explorer Wheels?</h3>
-        <ul className='list-disc list-inside text-gray-600 mb-6'>
-          <li>Locally curated vehicles & stays</li>
-          <li>Transparent pricing</li>
-          <li>Safety kits & 24/7 support</li>
-          <li>Easy WhatsApp booking</li>
-        </ul>
-
-        {/* Animated vehicles */}
-        <div className='relative w-full h-48 flex items-center justify-center'>
-          <motion.img
-            src='/assets/bike.png'
-            alt='Bike'
-            className='w-32 absolute left-10 bottom-0'
-            animate={{ x: [0, 20, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <motion.img
-            src='/assets/car.png'
-            alt='Car'
-            className='w-40 absolute right-10 bottom-0'
-            animate={{ x: [-20, 0, -20] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
+      {/* Right side: Why Explorer Wheels */}
+      <div className='relative flex flex-col items-center justify-center text-center'>
+        <h3 className='text-2xl font-semibold mb-8'>Why Explorer Wheels?</h3>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-md'>
+          {features.map((item, index) => (
+            <motion.div
+              key={index}
+              className='bg-white rounded-xl shadow-sm hover:shadow-md transition p-5 flex flex-col items-center justify-center text-center border border-gray-100'
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              {item.icon}
+              <h4 className='font-semibold text-gray-800 mt-3 text-sm'>{item.title}</h4>
+              <p className='text-xs text-gray-600 mt-1'>{item.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
-
-
-

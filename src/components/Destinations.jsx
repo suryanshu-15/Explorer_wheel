@@ -7,18 +7,9 @@ import "swiper/css/pagination"
 import { EffectCoverflow, Autoplay } from "swiper/modules"
 
 export default function Destinations() {
-  // Use the URL for your hosted Commutes & Transit solution
-  // This URL points to the pre-built HTML page that contains the map and its logic.
-  const commutesMapSrc = "https://storage.googleapis.com/maps-solutions-675yca80ha/commutes/olhg/commutes.html";
-{<iframe
-  title="Koraput Commutes Map"
-  src={commutesMapSrc} // <-- This points to the map application
-  width="100%"
-  height="600px"
-  style={{ border: 0 }}
-  allowFullScreen
-  loading="lazy"
-/>}
+  const commutesMapSrc =
+    "https://storage.googleapis.com/maps-solutions-675yca80ha/commutes/olhg/commutes.html"
+
   return (
     <section id="destinations" className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto text-center px-4">
@@ -51,13 +42,19 @@ export default function Destinations() {
               1280: { slidesPerView: 3, spaceBetween: 40 },
             }}
           >
-            {destinations.map(d => (
+            {destinations.map((d) => (
               <SwiperSlide key={d.id}>
                 <div className="bg-white rounded-2xl overflow-hidden shadow-md transition-transform duration-300 transform hover:scale-105">
-                  <img src={d.img} alt={d.name} className="w-full h-48 object-cover" />
+                  <img
+                    src={d.img}
+                    alt={d.name}
+                    className="w-full h-48 object-cover"
+                  />
                   <div className="p-5 text-left">
                     <h4 className="font-semibold text-gray-800 text-lg">{d.name}</h4>
-                    <p className="text-sm text-gray-600 mt-1 line-clamp-2">{d.short}</p>
+                    <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                      {d.short}
+                    </p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -65,16 +62,21 @@ export default function Destinations() {
           </Swiper>
         </div>
 
-        {/* Google Map Section - Now embedding the Commutes & Transit solution */}
+        {/* Google Map Section */}
         <div className="mt-14">
-          <h4 className="text-xl font-semibold text-gray-800 mb-4">Find All Destinations on Map</h4>
-          <div className="rounded-2xl overflow-hidden shadow-md border border-gray-200">
+          <h4 className="text-xl font-semibold text-gray-800 mb-4">
+            Find All Destinations on Map
+          </h4>
+
+          {/* Responsive Map Container */}
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-md border border-gray-200"
+               style={{ paddingTop: "56.25%" }}> 
+            {/* 16:9 aspect ratio */}
             <iframe
-              title="Koraput Commutes Map" // Give it a more specific title
-              src={commutesMapSrc} // Use the URL for your commutes solution
-              width="100%"
-              height="600px" // Adjust height as needed for the UI
-              style={{ border: 0 }} // React uses camelCase for style properties
+              title="Koraput Commutes Map"
+              src={commutesMapSrc}
+              className="absolute top-0 left-0 w-full h-full"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
