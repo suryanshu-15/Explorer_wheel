@@ -11,6 +11,8 @@ import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import Gallery from './components/Gallary'
+import AdminDashboard from './components/AdminDashboard'; 
+
 
 export default function App(){
   return (
