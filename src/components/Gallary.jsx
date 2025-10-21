@@ -29,7 +29,8 @@ export default function Gallery() {
         </div>
 
         {/* Grid of Remaining Images */}
-        <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           {images.slice(1).map((img, i) => (
             <img
               key={i}
@@ -39,6 +40,8 @@ export default function Gallery() {
             />
           ))}
         </div>
+
+
 
         <div className='flex justify-center mt-10'>
           <Link
