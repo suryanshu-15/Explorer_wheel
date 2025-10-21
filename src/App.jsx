@@ -12,12 +12,14 @@ import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import Gallery from './components/Gallary'
 import AdminDashboard from './components/AdminDashboard'; 
+import EnquiryForm from './components/Enquiryform'
 
 
 export default function App(){
   return (
     <div className='min-h-screen bg-gradient-to-b from-blue-50 to-white text-gray-800'>
       <Header/>
+      <EnquiryForm />
       <Hero/>
       <main className='max-w-7xl mx-auto px-4 py-8'>
         <Services/>

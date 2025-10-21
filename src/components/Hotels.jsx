@@ -11,7 +11,7 @@ const hotels = [
       'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrsAmmuv_0FVZFyVTAPMuTuOP1tf21yvH-gSSC7RUV7ybGcYP3M59BHrXbSwtGoamcW9wWdXw80o00rDzDCaCCIOYI6hDoA24stDB7MKwNql6Ghzl9IKtL6kTxFqWHOp7Qc4OxiaHz2C54w=s680-w680-h510-rw',
       'https://content.jdmagicbox.com/v2/comp/koraput/d9/9999p6852.6852.170128111642.h1d9/catalogue/hotel-alishan-manabar-koraput-restaurants-9xgd63vrsj-250.jpg'
     ],
-    price: 'Starting from ₹,1800 / night'
+    price: 'Starting from ₹,1500 / night'
   },
   {
     id: 2,
@@ -23,11 +23,11 @@ const hotels = [
       'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'
     ],
-    price: 'Starting from ₹1,200 / night'
+    price: 'Starting from ₹1,300 / night'
   },
   {
     id: 3,
-    name: 'Krishna Dormitory & Home Stay',
+    name: 'Krishna Dormitory',
     desc: 'Affordable, cozy, and perfect for backpackers and family stays.',
     img: 'https://r1imghtlak.mmtcdn.com/4059823a-44ef-4b79-84ba-7c3196e093ee.jpg',
     images: [
@@ -35,7 +35,7 @@ const hotels = [
       'https://lh3.googleusercontent.com/p/AF1QipPhL0VaEzhSE1WHAH9SczNH3UYwluUlOX7i3Wym=s680-w680-h510-rw',
       'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCQqXm6xFmCsk_ChzixFEPY6Ob_XZdiz1WuKtLCf7Bc9i4Ht1swaumnztfn5uEgcW2eP6oCKpwBtzzAxfB7DGG8U_sfiypXyMSANoYnWdvJE_OiVWhp2UrdRx5ztmfqiJIJ3fWcw=s680-w680-h510-rw'
     ],
-    price: 'Starting from ₹600 / night'
+    price: 'Starting from ₹200 / night'
   },
   {
     id: 4,
@@ -47,8 +47,19 @@ const hotels = [
       'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqoRx-IBYE1psXAyuUgdPw48BdU7Cla56Kvxjdz9y3beYqwLhQQLAh2F9pmdalWW4S0Gc5RbxAIat8LYk_VsO7yLhmsq-sdSzTzQsjKn1I_fFwe7tytRoxB3e3ZqLtwt4YWxAI=s680-w680-h510-rw',
       'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrb8mAMN1dlXVWBWak_EWDCHW6zHQcexqtdjaKkfgwvk9C8M5JwWy7n2SFD20n_uqIZw_b8JshfNEI8F9LMzSc7MiIDk60yvLxzlzF4bfzVeT-3hVtwBzGTqLFD6BJ8rB6TP65A=s680-w680-h510-rw'
     ],
-    price: 'Satarting from ₹1,500 / night'
-  }
+    price: 'Satarting from ₹1,200 / night'
+  },
+    {id: 5,
+    name: 'Krishna Homestay',
+    desc: 'Affordable, cozy, and perfect for backpackers and family stays.',
+    img: 'https://r1imghtlak.mmtcdn.com/4059823a-44ef-4b79-84ba-7c3196e093ee.jpg',
+    images: [
+      'https://lh3.googleusercontent.com/p/AF1QipOSSczCxNlMMJQhsRhflaCSS9DdjmN9XqzQ7jXb=s680-w680-h510-rw',
+      'https://lh3.googleusercontent.com/p/AF1QipPhL0VaEzhSE1WHAH9SczNH3UYwluUlOX7i3Wym=s680-w680-h510-rw',
+      'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrCQqXm6xFmCsk_ChzixFEPY6Ob_XZdiz1WuKtLCf7Bc9i4Ht1swaumnztfn5uEgcW2eP6oCKpwBtzzAxfB7DGG8U_sfiypXyMSANoYnWdvJE_OiVWhp2UrdRx5ztmfqiJIJ3fWcw=s680-w680-h510-rw'
+    ],
+    price: 'Starting from ₹1800 / night'
+  },
 ]
 
 export default function Hotels() {

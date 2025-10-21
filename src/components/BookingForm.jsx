@@ -223,6 +223,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ShieldCheck, DollarSign, Headphones, MessageCircle } from 'lucide-react'
 import { PHONE, EMAIL, ADDRESS } from '../config'
+import EnquiryForm from "../components/Enquiryform";
 
 const bikes = [
   'Hero Splendor', 'Hero Passion Pro', 'Honda Livo', 'Honda Shine',
