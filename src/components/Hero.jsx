@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <div className='relative mb-12'>
       <div className='relative h-72 md:h-96 overflow-hidden'>
-        
+
         {/* Video background */}
         <video
           className="w-full h-full object-cover"
@@ -25,10 +25,16 @@ export default function Hero() {
               Self-drive bikes & cars, taxi packages, stays, and camping kits. Adventure-ready vehicles and curated local tours.
             </p>
             <div className='mt-6 flex gap-3 justify-center'>
-              <a href='#booking' className='px-4 py-2 bg-yellow-400 text-black rounded shadow'>
+              <a
+                href='#booking'
+                className='px-4 py-2 bg-slate-900 hover:bg-slate-700 transition text-white rounded shadow transition-transform transform active:scale-95'
+              >
                 Book Now
               </a>
-              <a href='#packages' className='px-4 py-2 bg-transparent border border-white rounded'>
+              <a
+                href='#packages'
+                className='px-4 py-2 bg-transparent border border-white rounded transition-transform transform active:scale-95'
+              >
                 View Packages
               </a>
             </div>

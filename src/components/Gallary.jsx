@@ -46,7 +46,7 @@ export default function Gallery() {
         <div className='flex justify-center mt-10'>
           <Link
             to='/gallery'
-            className='px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition'
+            className='px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-700 transition'
           >
             View All Photos
           </Link>

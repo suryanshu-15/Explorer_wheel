@@ -61,7 +61,7 @@ export default function EnquiryForm() {
         </button>
 
         {/* Header */}
-        <h2 className="text-xl font-semibold text-indigo-600 text-center">
+        <h2 className="text-xl font-semibold text-slate-600 text-center">
           Have a Query ?
         </h2>
         <p className="text-gray-500 text-center mb-3 text-sm">
@@ -113,7 +113,7 @@ export default function EnquiryForm() {
 
           <button
             type="submit"
-            className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition-all"
+            className="w-full bg-slate-500 hover:bg-slate-600 text-white py-2 rounded-lg transition-all"
           >
             Submit via WhatsApp
           </button>

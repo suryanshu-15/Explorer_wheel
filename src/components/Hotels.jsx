@@ -119,7 +119,7 @@ export default function Hotels() {
                     setSelectedHotel(h)
                     setShowForm(false)
                   }}
-                  className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  className="px-3 py-1 bg-slate-900 text-white rounded hover:bg-slate-700"
                 >
                   View
                 </button>
