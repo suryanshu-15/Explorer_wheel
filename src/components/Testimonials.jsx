@@ -58,7 +58,7 @@ export default function Testimonials() {
           href='https://g.page/r/CWo1VcDtIKBKEBM/review'
           target='_blank'
           rel='noopener noreferrer'
-          className='inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition'
+          className='inline-block bg-slate-900 text-white px-6 py-2 rounded-lg hover:bg-slate-600 transition'
         >
            Share Your Experience on Google
         </a>

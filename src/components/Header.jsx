@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('#services'); // default active
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -12,6 +13,17 @@ export default function Header() {
     { label: 'Destinations', href: '#destinations' },
     { label: 'Booking', href: '#booking' },
   ];
+
+  const handleClick = (href, e) => {
+    e.preventDefault(); // prevent default jump
+    setActiveLink(href);
+    setIsOpen(false); // close mobile menu on click
+
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="bg-white/80 backdrop-blur sticky top-0 z-40 shadow-sm">
@@ -28,7 +40,16 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 items-center text-sm">
           {menuLinks.map((link, index) => (
-            <a key={index} href={link.href} className="hover:text-blue-600">
+            <a
+              key={index}
+              href={link.href}
+              onClick={(e) => handleClick(link.href, e)}
+              className={`${
+                activeLink === link.href
+                  ? 'text-slate-600 font-semibold border-b-2 border-slate-600'
+                  : 'text-gray-700 hover:text-slate-600'
+              } transition-colors`}
+            >
               {link.label}
             </a>
           ))}
@@ -50,8 +71,12 @@ export default function Header() {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="block text-gray-700 hover:text-blue-600"
-                  onClick={() => setIsOpen(false)}
+                  className={`block ${
+                    activeLink === link.href
+                      ? 'text-slate-600 font-semibold'
+                      : 'text-gray-700 hover:text-slate-600'
+                  }`}
+                  onClick={(e) => handleClick(link.href, e)}
                 >
                   {link.label}
                 </a>

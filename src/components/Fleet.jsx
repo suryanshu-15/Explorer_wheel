@@ -41,10 +41,10 @@ export default function Fleet() {
                     <p className='text-sm text-gray-600 mt-2 line-clamp-2'>{b.desc}</p>
                   </div>
                   <div className='mt-4 flex items-center justify-between'>
-                    <div className='text-lg font-bold text-blue-600'>{b.price}</div>
+                    <div className='text-lg font-bold text-slate-700'>{b.price}</div>
                     <a
                       href='#booking'
-                      className='px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition'
+                      className='px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-grey-900 transition'
                     >
                       Book
                     </a>
@@ -57,7 +57,7 @@ export default function Fleet() {
 
         {/* ----------------- Cars Section ----------------- */}
         <div className='pt-10 border-t border-gray-200'>
-          <h4 className='text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-blue-600 inline-block'>
+          <h4 className='text-2xl font-semibold text-gray-800 mb-6 border-b-2 border-slate-600 inline-block'>
             Four-Wheelers
           </h4>
 
@@ -84,7 +84,7 @@ export default function Fleet() {
                     <div className='text-sm text-gray-700'>12hr / 24hr</div>
                     <a
                       href='#booking'
-                      className='px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition'
+                      className='px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-slate-700 transition'
                     >
                       Book
                     </a>
