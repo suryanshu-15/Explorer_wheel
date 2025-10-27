@@ -12,10 +12,10 @@ const bikes = [
   { id: 9, name: 'Honda Hornet', type: 'Street Fighter', price:999, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/207262/cb-125-hornet-right-side-view-3.jpeg?isig=0&q=80', desc: 'Muscular design and refined engine — perfect for weekend rides.' },
 
   // Higher CC
-  { id: 10, name: 'Royal Enfield Hunter 350', type: 'Higher CC', price: 499, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/royalenfield-hunter-350-standard1745757843659.jpg?q=80', desc: 'Compact and stylish cruiser — ideal for city and highway rides.' },
+  { id: 10, name: 'Royal Enfield Hunter 350', type: 'Higher CC', price: 1499, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/royalenfield-hunter-350-standard1745757843659.jpg?q=80', desc: 'Compact and stylish cruiser — ideal for city and highway rides.' },
   { id: 11, name: 'Royal Enfield Classic 350', type: 'Higher CC', price: 1499, img: 'https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/new-classic-350/studio-shots/360/cammando-sand/01.png', desc: 'Classic long-ride cruiser — ideal for scenic routes like Deomali.' },
-  { id: 12, name: 'Royal Enfield Meteor 350', type: 'Higher CC', price: 499, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/royalenfield-meteor-350-fireball1757944044825.jpg?q=80', desc: 'Comfort cruiser built for long-distance touring with style.' },
-  { id: 13, name: 'Benelli Imperiale 400', type: 'Higher CC', price: 499, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/48694/imperiale-400-right-side-view.png?isig=0&q=80', desc: 'Retro-styled motorcycle offering refined performance and comfort.' },
+  { id: 12, name: 'Royal Enfield Meteor 350', type: 'Higher CC', price: 1499, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/royalenfield-meteor-350-fireball1757944044825.jpg?q=80', desc: 'Comfort cruiser built for long-distance touring with style.' },
+  { id: 13, name: 'Benelli Imperiale 400', type: 'Higher CC', price: 1499, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/48694/imperiale-400-right-side-view.png?isig=0&q=80', desc: 'Retro-styled motorcycle offering refined performance and comfort.' },
 
   // Scooters
   { id: 14, name: 'Honda Dio', type: 'Scooter', price:799, img: 'https://imgd.aeplcdn.com/664x374/n/cw/ec/1/versions/--standard-20251736863978494.jpg?q=80', desc: 'Lightweight and stylish scooter for easy city mobility.' },
