@@ -52,7 +52,10 @@ export default function Services() {
   }
 
   return (
-    <section id="services" className="py-20 px-4 md:px-10 bg-gradient-to-b from-blue-50 via-white to-blue-100">
+    <section
+      id="services"
+      className="relative py-16 px-4 md:px-10 bg-gradient-to-b from-blue-50 via-white to-blue-100"
+    >
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h3
@@ -60,7 +63,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-4xl font-extrabold text-gray-800 mb-3"
+          className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-3"
         >
           Our Premium Services
         </motion.h3>
@@ -70,13 +73,13 @@ export default function Services() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-gray-600 text-lg mb-14 max-w-3xl mx-auto"
+          className="text-gray-600 text-base sm:text-lg mb-10 sm:mb-14 max-w-3xl mx-auto"
         >
           Everything you need for a perfect trip — from self-drive rides to cozy stays and guided adventures.
         </motion.p>
 
         {/* Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-10">
           {services.map((s, i) => (
             <motion.div
               key={i}
@@ -85,22 +88,27 @@ export default function Services() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="bg-white rounded-3xl shadow-md overflow-hidden transform hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="bg-white rounded-xl sm:rounded-3xl shadow-md hover:shadow-lg 
+                         overflow-hidden transform hover:-translate-y-2 transition-all duration-500"
             >
               {/* Image */}
               <div className="relative group overflow-hidden">
                 <motion.img
                   src={s.img}
                   alt={s.title}
-                  className="w-full h-60 object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-28 sm:h-48 md:h-60 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               {/* Text */}
-              <div className="p-6 text-left">
-                <h4 className="text-xl font-semibold text-gray-800 mb-2">{s.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
+              <div className="p-3 sm:p-6 text-center sm:text-left">
+                <h4 className="text-xs sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2">
+                  {s.title}
+                </h4>
+                <p className="text-[10px] sm:text-sm text-gray-600 leading-snug sm:leading-relaxed">
+                  {s.desc}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -119,4 +127,3 @@ export default function Services() {
     </section>
   )
 }
-

@@ -7,7 +7,7 @@ export default function EnquiryForm() {
 
   useEffect(() => {
     const hasClosed = localStorage.getItem("popupClosed");
-    // if (hasClosed) return; // Uncomment if you want to hide permanently after closing once
+    // if (hasClosed) return; // Uncomment if you want to hide after closing once
 
     const handleScroll = () => {
       if (window.scrollY > 400) {
@@ -38,9 +38,7 @@ export default function EnquiryForm() {
       }`
     );
 
-    // Open WhatsApp chat directly
     window.open(`https://wa.me/${PHONE}?text=${encodedMessage}`, "_blank");
-
     handleClose();
   };
 
@@ -48,10 +46,14 @@ export default function EnquiryForm() {
 
   return (
     <div
-      className="fixed bottom-24 right-6 z-50 animate-slideUp"
+      className="fixed inset-0 z-50 flex items-end justify-center md:items-end md:justify-end p-4"
       style={{ animation: "slideUp 0.6s ease-out" }}
     >
-      <div className="relative bg-white shadow-2xl border border-gray-200 rounded-2xl w-80 p-5">
+      {/* Popup Box */}
+      <div
+        className="relative bg-white shadow-2xl border border-gray-200 rounded-2xl w-[90%] max-w-sm p-5 
+        md:fixed md:bottom-24 md:right-6 md:w-80 md:rounded-2xl"
+      >
         {/* Close Button */}
         <button
           onClick={handleClose}
@@ -62,10 +64,10 @@ export default function EnquiryForm() {
 
         {/* Header */}
         <h2 className="text-xl font-semibold text-slate-600 text-center">
-          Have a Query ?
+          Have a Query?
         </h2>
         <p className="text-gray-500 text-center mb-3 text-sm">
-           Contact us on WhatsApp!
+          Contact us on WhatsApp!
         </p>
 
         {/* Form */}
@@ -87,7 +89,6 @@ export default function EnquiryForm() {
             className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-indigo-200 outline-none"
           />
 
-          {/* Enquiry Type Dropdown */}
           <select
             name="service"
             required
@@ -98,7 +99,7 @@ export default function EnquiryForm() {
               Enquiry About...
             </option>
             <option value="Car Rental">Cars</option>
-            <option value="Bike Rental">Bike</option>
+            <option value="Bike Rental">Bikes</option>
             <option value="Hotel Booking">Hotel</option>
             <option value="Taxi Service">Taxi</option>
             <option value="Camping Service">Camping</option>
@@ -120,7 +121,7 @@ export default function EnquiryForm() {
         </form>
       </div>
 
-      {/* Add CSS for animation */}
+      {/* Animation */}
       <style jsx>{`
         @keyframes slideUp {
           from {
@@ -130,6 +131,12 @@ export default function EnquiryForm() {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .fixed > div {
+            margin-bottom: 4rem;
           }
         }
       `}</style>

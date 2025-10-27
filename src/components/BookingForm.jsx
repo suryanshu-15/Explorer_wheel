@@ -221,7 +221,17 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp, FaCheckCircle, FaCar, FaMotorcycle, FaHotel, FaShieldAlt, FaTags, FaClock, FaHandsHelping } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaCheckCircle,
+  FaCar,
+  FaMotorcycle,
+  FaHotel,
+  FaShieldAlt,
+  FaTags,
+  FaClock,
+  FaHandsHelping,
+} from "react-icons/fa";
 import { PHONE } from "../config";
 import bikes from "../data/bikes";
 import cars from "../data/cars";
@@ -278,10 +288,13 @@ export default function BookingFlow() {
     }
     const total = getSubtotal() - discount;
     const selections = Object.entries(selectedItems)
-      .map(([type, item]) => `${type.toUpperCase()}: ${item.name} (₹${item.price})`)
+      .map(
+        ([type, item]) =>
+          `${type.toUpperCase()}: ${item.name} (₹${item.price.toLocaleString()})`
+      )
       .join("\n");
     const text = encodeURIComponent(
-      `Hello Explorer Wheels!\nI want to book:\n${selections}\nTotal Price: ₹${total}\nCoupon: ${
+      `Hello Explorer Wheels!\nI want to book:\n${selections}\nTotal Price: ₹${total.toLocaleString()}\nCoupon: ${
         coupon || "None"
       }`
     );
@@ -294,37 +307,34 @@ export default function BookingFlow() {
   const steps = ["Select Type", "Choose Options", "Checkout"];
 
   return (
-    <section className="min-h-screen bg-white text-slate-900 flex justify-center items-center py-10 px-4">
-      <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-10 items-start">
+    <section className="min-h-screen bg-white text-slate-900 flex justify-center items-center py-10 px-3 sm:px-6">
+      <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-6">
         {/* LEFT: Booking Form */}
-        <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-200">
+        <div className="relative bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6 md:p-8 max-h-[90vh] overflow-y-auto">
           {/* Step Indicator */}
-          <div className="flex justify-between items-center mb-10 relative">
+          <div className="flex justify-between items-center mb-6">
             {steps.map((label, index) => (
               <div key={label} className="flex-1 text-center relative">
                 <div
-                  className={`w-10 h-10 mx-auto rounded-full flex items-center justify-center mb-2 font-semibold transition-all duration-300 ${
+                  className={`w-9 h-9 mx-auto flex items-center justify-center mb-1 rounded-lg font-semibold ${
                     step >= index + 1
-                      ? "bg-slate-900 text-white shadow-md"
-                      : "bg-white border border-slate-300 text-slate-500"
+                      ? "bg-slate-900 text-white"
+                      : "bg-white border border-slate-400 text-slate-500"
                   }`}
                 >
-                  {step > index + 1 ? <FaCheckCircle /> : <span>{index + 1}</span>}
+                  {step > index + 1 ? (
+                    <FaCheckCircle size={16} />
+                  ) : (
+                    <span>{index + 1}</span>
+                  )}
                 </div>
                 <p
-                  className={`text-sm font-medium ${
+                  className={`text-xs font-medium ${
                     step >= index + 1 ? "text-slate-900" : "text-slate-400"
                   }`}
                 >
                   {label}
                 </p>
-                {index < steps.length - 1 && (
-                  <div
-                    className={`absolute top-5 left-1/2 w-full h-[2px] ${
-                      step > index + 1 ? "bg-slate-900" : "bg-slate-300/40"
-                    }`}
-                  />
-                )}
               </div>
             ))}
           </div>
@@ -337,93 +347,108 @@ export default function BookingFlow() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-6 text-center"
+                className="text-center"
               >
-                <h2 className="text-3xl font-bold mb-4">What would you like to book?</h2>
-                <div className="grid sm:grid-cols-3 gap-6 mt-6">
+                <h2 className="text-xl sm:text-2xl font-bold mb-2">
+                  What would you like to book?
+                </h2>
+                <p className="text-slate-500 mb-4 text-sm">
+                  You can select multiple options below
+                </p>
+
+                <div className="grid grid-cols-3 gap-4">
                   {[
-                    { type: "bike", icon: <FaMotorcycle size={32} /> },
-                    { type: "car", icon: <FaCar size={32} /> },
-                    { type: "hotel", icon: <FaHotel size={32} /> },
-                  ].map(({ type, icon }) => (
-                    <motion.button
-                      key={type}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => handleTypeToggle(type)}
-                      className={`flex flex-col items-center gap-3 p-8 rounded-2xl bg-white/70 backdrop-blur-lg border border-slate-300 text-lg font-medium capitalize transition-all hover:shadow-md ${
-                        selectedTypes.includes(type)
-                          ? "ring-4 ring-slate-900/60 bg-slate-900/5"
-                          : ""
-                      }`}
-                    >
-                      <div className="text-slate-900">{icon}</div>
-                      {type}
-                    </motion.button>
-                  ))}
+                    { type: "bike", icon: <FaMotorcycle size={26} /> },
+                    { type: "car", icon: <FaCar size={26} /> },
+                    { type: "hotel", icon: <FaHotel size={26} /> },
+                  ].map(({ type, icon }) => {
+                    const isSelected = selectedTypes.includes(type);
+                    return (
+                      <motion.button
+                        key={type}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => handleTypeToggle(type)}
+                        className={`p-4 rounded-xl bg-white border text-sm sm:text-base flex flex-col items-center gap-2 transition-all ${
+                          isSelected
+                            ? "border-slate-900 bg-slate-100"
+                            : "border-slate-300 hover:border-slate-500"
+                        }`}
+                      >
+                        {icon}
+                        <span className="capitalize">{type}</span>
+                      </motion.button>
+                    );
+                  })}
                 </div>
+
                 <button
                   onClick={() => setStep(2)}
                   disabled={selectedTypes.length === 0}
-                  className="mt-8 px-10 py-3 rounded-xl bg-slate-900 hover:bg-slate-700 text-white transition disabled:opacity-40 font-semibold shadow-lg"
+                  className="mt-6 w-full bg-slate-900 text-white rounded-xl py-2 font-semibold disabled:opacity-40"
                 >
-                  Continue →
+                  Continue →{" "}
+                  {selectedTypes.length > 0 && `(${selectedTypes.length})`}
                 </button>
               </motion.div>
             )}
 
+            {/* Step 2: Items */}
             {step === 2 && (
               <motion.div
                 key="step2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-8"
+                className="space-y-6"
               >
-                <h2 className="text-3xl font-bold text-center">Choose Your Options</h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-center">
+                  Choose Your Options
+                </h2>
+
                 {selectedTypes.map((type) => (
                   <div key={type}>
-                    <h3 className="text-2xl mb-4 capitalize font-semibold text-slate-800">
+                    <h3 className="text-lg font-semibold capitalize mb-2">
                       {type}s
                     </h3>
-                    <div className="grid sm:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 gap-3">
                       {dataMap[type]?.map((item) => (
                         <motion.div
                           key={item.name}
-                          whileHover={{ scale: 1.03 }}
+                          whileHover={{ scale: 1.02 }}
                           onClick={() => handleItemSelect(type, item)}
-                          className={`cursor-pointer rounded-2xl p-4 bg-white/70 border border-slate-200 hover:border-slate-700 transition backdrop-blur-xl ${
+                          className={`cursor-pointer p-3 rounded-xl border bg-white transition ${
                             selectedItems[type]?.name === item.name
-                              ? "ring-4 ring-slate-900/60"
-                              : ""
+                              ? "ring-2 ring-slate-900 border-slate-900"
+                              : "border-slate-200 hover:border-slate-400"
                           }`}
                         >
                           {item.image && (
                             <img
                               src={item.image}
                               alt={item.name}
-                              className="rounded-xl w-full h-32 object-cover mb-3"
+                              className="rounded-lg w-full h-20 object-cover mb-2"
                             />
                           )}
-                          <h4 className="font-semibold text-lg">{item.name}</h4>
-                          <p className="text-sm text-slate-600">₹{item.price}/day</p>
+                          <p className="font-medium text-sm">{item.name}</p>
+                          <p className="text-xs text-slate-600">
+                            ₹{item.price.toLocaleString()}/day
+                          </p>
                         </motion.div>
                       ))}
                     </div>
                   </div>
                 ))}
-                <div className="flex justify-between flex-wrap gap-4 mt-10">
+
+                <div className="flex justify-between mt-4">
                   <button
                     onClick={() => setStep(1)}
-                    className="text-slate-500 underline"
+                    className="text-slate-500 underline text-sm"
                   >
                     ← Back
                   </button>
                   <button
                     onClick={() => setStep(3)}
-                    className="bg-slate-900 px-8 py-3 rounded-xl hover:bg-slate-700 text-white transition font-semibold shadow-md"
+                    className="bg-slate-900 text-white px-6 py-2 rounded-xl text-sm font-semibold"
                   >
                     Continue →
                   </button>
@@ -431,46 +456,51 @@ export default function BookingFlow() {
               </motion.div>
             )}
 
+            {/* Step 3: Checkout */}
             {step === 3 && (
               <motion.div
                 key="step3"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-6"
+                className="space-y-5"
               >
-                <h2 className="text-3xl font-bold text-center mb-4">
-                  Checkout & Apply Coupon
+                <h2 className="text-xl sm:text-2xl font-bold text-center">
+                  Checkout
                 </h2>
-                <div className="bg-white/70 p-6 rounded-2xl border border-slate-200 backdrop-blur-xl shadow-sm">
+
+                <div className="bg-white border border-slate-200 rounded-xl p-4">
                   {Object.entries(selectedItems).map(([type, item]) => (
-                    <div key={type} className="flex justify-between mb-2">
+                    <div
+                      key={type}
+                      className="flex justify-between text-sm mb-1"
+                    >
                       <p>
                         {item.name}{" "}
-                        <span className="text-slate-400 text-sm">({type})</span>
+                        <span className="text-slate-400">({type})</span>
                       </p>
-                      <p>₹{item.price}</p>
+                      <p>₹{item.price.toLocaleString()}</p>
                     </div>
                   ))}
-                  <hr className="my-3 border-slate-200" />
-                  <p className="flex justify-between font-semibold">
-                    <span>Subtotal:</span> <span>₹{getSubtotal()}</span>
+                  <hr className="my-2" />
+                  <p className="flex justify-between text-sm font-semibold">
+                    <span>Subtotal:</span>
+                    <span>₹{getSubtotal().toLocaleString()}</span>
                   </p>
-                  <p className="flex justify-between text-slate-700">
-                    <span>Discount:</span> <span>₹{discount}</span>
+                  <p className="flex justify-between text-sm text-slate-600">
+                    <span>Discount:</span>
+                    <span>₹{discount}</span>
                   </p>
-                  <p className="flex justify-between text-xl font-bold mt-2 text-slate-900">
+                  <p className="flex justify-between text-base font-bold mt-2">
                     <span>Total:</span>
-                    <span>₹{getSubtotal() - discount}</span>
+                    <span>₹{(getSubtotal() - discount).toLocaleString()}</span>
                   </p>
                 </div>
 
-                <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Enter coupon/referral code"
-                    className="flex-1 p-3 rounded-xl bg-white border border-slate-300 outline-none text-slate-800 placeholder-slate-400"
+                    placeholder="Coupon code"
+                    className="flex-1 border rounded-xl p-2 text-sm"
                     value={coupon}
                     onChange={(e) => {
                       setCoupon(e.target.value);
@@ -479,29 +509,29 @@ export default function BookingFlow() {
                   />
                   <button
                     onClick={handleCouponCheck}
-                    className="bg-slate-900 px-6 py-3 rounded-xl hover:bg-slate-700 text-white transition font-semibold"
+                    className="bg-slate-900 text-white px-4 py-2 rounded-xl text-sm font-semibold"
                   >
                     Apply
                   </button>
                 </div>
 
                 {couponStatus === "valid" && (
-                  <p className="text-green-600 mt-2">✅ Coupon Applied!</p>
+                  <p className="text-green-600 text-sm">✅ Coupon Applied!</p>
                 )}
                 {couponStatus === "invalid" && (
-                  <p className="text-red-500 mt-2">❌ Invalid Coupon Code</p>
+                  <p className="text-red-500 text-sm">❌ Invalid Code</p>
                 )}
 
                 <button
                   onClick={handleBook}
-                  className="w-full mt-8 flex items-center justify-center gap-3 bg-slate-900 py-4 rounded-2xl font-bold text-lg text-white shadow-md hover:bg-slate-700 transition"
+                  className="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-semibold mt-3 hover:bg-green-700"
                 >
-                  <FaWhatsapp className="text-2xl" /> Book via WhatsApp
+                  <FaWhatsapp size={18} /> Book via WhatsApp
                 </button>
 
                 <button
                   onClick={() => setStep(2)}
-                  className="block mx-auto text-slate-500 underline mt-4"
+                  className="block mx-auto text-slate-500 underline text-sm"
                 >
                   ← Back
                 </button>
@@ -511,46 +541,43 @@ export default function BookingFlow() {
         </div>
 
         {/* RIGHT: Why Explorer Wheels */}
-        <div className="flex flex-col gap-6">
-          <h2 className="text-3xl font-bold mb-4">Why Explorer Wheels?</h2>
-
+        <div className="hidden lg:flex flex-col gap-5">
+          <h2 className="text-3xl font-bold mb-2">Why Explorer Wheels?</h2>
           {[
             {
-              icon: <FaShieldAlt className="text-slate-900 text-3xl" />,
+              icon: <FaShieldAlt className="text-3xl text-slate-900" />,
               title: "Locally Curated Vehicles & Stays",
               desc: "Verified options ensuring comfort and reliability.",
             },
             {
-              icon: <FaTags className="text-slate-900 text-3xl" />,
+              icon: <FaTags className="text-3xl text-slate-900" />,
               title: "Transparent Pricing",
               desc: "No hidden charges — what you see is what you pay.",
             },
             {
-              icon: <FaClock className="text-slate-900 text-3xl" />,
+              icon: <FaClock className="text-3xl text-slate-900" />,
               title: "24/7 Support & Safety Kits",
               desc: "Your safety and convenience come first.",
             },
             {
-              icon: <FaHandsHelping className="text-slate-900 text-3xl" />,
+              icon: <FaHandsHelping className="text-3xl text-slate-900" />,
               title: "Easy WhatsApp Booking",
               desc: "Book rides or stays instantly via WhatsApp.",
             },
-          ].map((card, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.03 }}
-              className="flex gap-4 items-start p-5 bg-white/80 border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition backdrop-blur-md"
+          ].map((c, i) => (
+            <div
+              key={i}
+              className="flex gap-3 items-start bg-white border border-slate-200 rounded-xl p-4"
             >
-              <div className="shrink-0 p-3 bg-slate-100 rounded-xl">{card.icon}</div>
+              <div className="p-2 bg-slate-100 rounded-lg">{c.icon}</div>
               <div>
-                <h3 className="text-lg font-semibold">{card.title}</h3>
-                <p className="text-slate-600 text-sm">{card.desc}</p>
+                <h3 className="font-semibold">{c.title}</h3>
+                <p className="text-sm text-slate-600">{c.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
