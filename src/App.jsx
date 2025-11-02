@@ -25,7 +25,7 @@ export default function App(){
         <Services/>
         <Gallery/>
         <Fleet/>
-        <Packages   />
+        {/* <Packages   /> */}
         <Destinations/>
         <Hotels/>
         <BookingForm/>
