@@ -83,7 +83,7 @@ export default function Fleet() {
               />
               <div className='p-4 text-center'>
                 <h4 className='text-lg font-semibold text-gray-800'>{selectedCar.name}</h4>
-                <p className='text-sm text-gray-500 mt-1'>₹{selectedCar.price}</p>
+                
                 <a
                   href='#booking'
                   className='mt-3 inline-block px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-slate-700 transition'
@@ -150,7 +150,7 @@ export default function Fleet() {
                       <p className='text-sm text-gray-600 mt-2 line-clamp-2'>{b.desc}</p>
                     </div>
                     <div className='mt-4 flex items-center justify-between'>
-                      <div className='text-lg font-bold text-slate-700'>₹{b.price}</div>
+                      <div className='text-lg font-bold text-slate-700'>{b.price}</div>
                       <a
                         href='#booking'
                         className='px-4 py-2 bg-slate-900 text-white text-sm rounded-lg hover:bg-slate-700 transition'
